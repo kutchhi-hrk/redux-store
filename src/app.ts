@@ -34,7 +34,7 @@ button.addEventListener(
 
     })
 
-   // console.log(store.value);
+    console.log(store.value);
 
     input.value = '';
   },

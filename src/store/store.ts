@@ -1,15 +1,17 @@
+import { reducer } from "./reducers";
+
 export class store{
 
 
- private reducers: Function[] ;
+ private subscribers: Function[] ;
  
- private subscribers :{[key:string]:Function};
+ private  reducers:{[key:string]:Function};
 
  private state: {[key:string]:any};
 
  constructor(reducer,initialstate:{}){
 this.reducers=reducer;
-this.state=initialstate;
+this.state=this.reduce(initialstate,{});
 
  }
 
@@ -20,7 +22,7 @@ this.state=initialstate;
 
 
  dispatch(action){
-    // this.reducers=this.reduce();
+     this.state=this.reduce(this.state,action);
 // console.log(action);
 //     this.state={...this.state,
     
@@ -31,8 +33,13 @@ this.state=initialstate;
  }
 
 
- reduce(){
+ reduce(state,action){
+const newstate={}  ;
+for(const prop in this.reducers){
 
-   // this.reducers()
- }
+    newstate[prop]=this.reducers[prop](state[prop],action);
 }
+
+return newstate;
+ }
+}       

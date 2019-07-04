@@ -2,10 +2,10 @@ export const initialstate={
 
     loading:false,
     loaded:false,
-    data: {todos:[{label:'eat pizza', complete:false}]}
-}
+    data:  [{ label:'eat pizza', complete:false}]
+};
 
-export function reducer(state:{}, action:{
+export function reducer(state=initialstate, action:{
 type:string,
 payload:any
 

@@ -15,8 +15,14 @@ payload:any
     switch(this.type){
 
         case "ADD_TODOS":{
+            
+            const data=[...state.data,action.payload];
+          
+            return {
 
-            const todos=[...this.state.data,action.payload];
+                ...this.state,
+                data
+            }
         }
     }
 
